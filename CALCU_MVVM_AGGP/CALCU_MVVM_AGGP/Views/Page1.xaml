@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CALCU_MVVM_AGGP.Views.Page1"
-             BackgroundColor="Black">
+             BackgroundColor="Pink">
 
     <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Black" HeightRequest="550">
-        <Label x:Name="ResultadoLabel"  Text="" FontSize="48" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,16,0" />
-        <Label x:Name="ResultadoLabel" Text="0" FontSize="48" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,16,0" />
+        <Label TextColor="White" Text="{Binding OperacionTexto}" FontSize="24" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,16,0" />
+        <Label TextColor="White" x:Name="ResultadoLabel" Text="{Binding ResultadoTexto}" FontSize="48" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,16,0" />
 
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
@@ -23,35 +23,30 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <Button Text="C" Command="{Binding LimpiarPantallaCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="0" CornerRadius="10" />
+            <Button Text="AC" Command="{Binding BorrarUnNumeroCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="1" CornerRadius="10" />
+            <Button Text="/" Command="{Binding OperacionCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="2" CornerRadius="10" />
+            <Button Text="x" Command="{Binding OperacionCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="3" CornerRadius="10" />
 
-            <Button Text="C"  Command="{}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="0" CornerRadius="10" />
-            <Button Text="AC" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="1" CornerRadius="10" />
-            <Button Text="/"  BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="2" CornerRadius="10" />
-            <Button Text="x"  BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="3" CornerRadius="10" />
+            <Button Text="7" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="0" CornerRadius="10" />
+            <Button Text="8" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="1" CornerRadius="10" />
+            <Button Text="9" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="2" CornerRadius="10" />
+            <Button Text="-" Command="{Binding OperacionCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="3" CornerRadius="10" />
 
+            <Button Text="4" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="0" CornerRadius="10" />
+            <Button Text="5" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="1" CornerRadius="10" />
+            <Button Text="6" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="2" CornerRadius="10" />
+            <Button Text="+" Command="{Binding OperacionCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="3" CornerRadius="10" />
 
-            <Button Text="7"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="0" CornerRadius="10" />
-            <Button Text="8"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="1" CornerRadius="10" />
-            <Button Text="9"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="2" CornerRadius="10" />
-            <Button Text="-"  BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="3" CornerRadius="10" />
+            <Button Text="1" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="0" CornerRadius="10" />
+            <Button Text="2" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="1" CornerRadius="10" />
+            <Button Text="3" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="2" CornerRadius="10" />
+            <Button Text="=" Command="{Binding IgualCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="3" CornerRadius="10" />
 
-
-            <Button Text="4"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="0" CornerRadius="10" />
-            <Button Text="5"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="1" CornerRadius="10" />
-            <Button Text="6"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="2" CornerRadius="10" />
-            <Button Text="+"  BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="3" CornerRadius="10" />
-
-
-            <Button Text="1"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="0" CornerRadius="10" />
-            <Button Text="2"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="1" CornerRadius="10" />
-            <Button Text="3"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="2" CornerRadius="10" />
-            <Button Text="="  BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="3" CornerRadius="10" />
-
-
-            <Button Text="0"  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="0" CornerRadius="10" />
-            <Button Text="00" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="1" CornerRadius="10" />
-            <Button Text="."  BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="2" CornerRadius="10" />
-            <Button Text="DEL" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="3" CornerRadius="10" />
+            <Button Text="0" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="0" CornerRadius="10" />
+            <Button Text="00" Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="1" CornerRadius="10" />
+            <Button Text="." Command="{Binding NumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="2" CornerRadius="10" />
+            <Button Text="DEL" Command="{Binding BorrarUnNumeroCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="3" CornerRadius="10" />
         </Grid>
     </StackLayout>
 
