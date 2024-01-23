@@ -50,9 +50,11 @@ namespace CALCU_MVVM_AGGP.ViewModel
         #region PROCESOS
         private void Numero(string numero)
         {
+ 
             if (_limpiarPantalla)
             {
                 ResultadoTexto = "0";
+                OperacionTexto = "";  
                 _limpiarPantalla = false;
             }
 
@@ -66,10 +68,13 @@ namespace CALCU_MVVM_AGGP.ViewModel
             }
 
             OperacionTexto += numero;
+            
         }
+
 
         private void Operacion(string operador)
         {
+
             if (!string.IsNullOrEmpty(ResultadoTexto))
             {
                 if (!string.IsNullOrEmpty(_operador) && !_limpiarPantalla)
@@ -81,12 +86,13 @@ namespace CALCU_MVVM_AGGP.ViewModel
                 _operador = operador;
                 _limpiarPantalla = true;
 
-                OperacionTexto = $"{_valor1} {_operador} ";
+                OperacionTexto = $"{_valor1}{_operador}";
             }
             else
             {
                 ResultadoTexto = "Error";
             }
+
         }
 
 
@@ -128,7 +134,7 @@ namespace CALCU_MVVM_AGGP.ViewModel
             }
             else
             {
-                // Manejar el error, por ejemplo, mostrar un mensaje de error o establecer ResultadoTexto en un valor predeterminado.
+    
                 ResultadoTexto = "Error";
             }
         }
@@ -160,11 +166,28 @@ namespace CALCU_MVVM_AGGP.ViewModel
         #endregion
 
         #region COMANDOS
+
         public ICommand NumeroCommand => new Command<string>(Numero);
         public ICommand OperacionCommand => new Command<string>(Operacion);
         public ICommand IgualCommand => new Command(Igual);
         public ICommand LimpiarPantallaCommand => new Command(LimpiarPantalla);
         public ICommand BorrarUnNumeroCommand => new Command(BorrarUnNumero);
+
+
+        public ICommand NumeropuntoCommand => new Command(() => Numero("."));
+        public ICommand Numero00Command => new Command(() => Numero("00"));
+        public ICommand Numero0Command => new Command(() => Numero("0"));
+        public ICommand Numero1Command => new Command(() => Numero("1"));
+        public ICommand Numero2Command => new Command(() => Numero("2"));
+        public ICommand Numero3Command => new Command(() => Numero("3"));
+
+        public ICommand Numero4Command => new Command(() => Numero("4"));
+        public ICommand Numero5Command => new Command(() => Numero("5"));
+        public ICommand Numero6Command => new Command(() => Numero("6"));
+
+        public ICommand Numero7Command => new Command(() => Numero("7"));
+        public ICommand Numero8Command => new Command(() => Numero("8"));
+        public ICommand Numero9Command => new Command(() => Numero("9"));
         #endregion
     }
 }
