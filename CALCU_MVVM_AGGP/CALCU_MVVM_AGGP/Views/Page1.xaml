@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CALCU_MVVM_AGGP.Views.Page1"
              BackgroundColor="Black">
-
+ 
     <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Black" HeightRequest="550">
         <Label TextColor="White" Text="{Binding OperacionTexto}" FontSize="24" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,16,0" />
         <Label TextColor="White" x:Name="ResultadoLabel" Text="{Binding ResultadoTexto}" FontSize="48" HorizontalOptions="End" VerticalOptions="End" Margin="0,0,16,0" />
@@ -23,30 +23,70 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Text="C"  Command="{Binding LimpiarPantallaCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="0" CornerRadius="10" />
-            <Button Text="AC" Command="{Binding BorrarUnNumeroCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="1" CornerRadius="10" />
-            <Button Text="/" Command="{Binding OperacionCommand}" CommandParameter="/" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="2" CornerRadius="10" />
-            <Button Text="x" Command="{Binding OperacionCommand}"  CommandParameter="x" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="0" Grid.Column="3" CornerRadius="10" />
+            <Button Text="C"  Command="{Binding LimpiarPantallaCommand}" BackgroundColor="Black" TextColor="OrangeRed" FontSize="32" Grid.Row="0" Grid.Column="0" CornerRadius="10" />
+            <Button Text="AC" Command="{Binding BorrarUnNumeroCommand}" BackgroundColor="Black" TextColor="OrangeRed" FontSize="32" Grid.Row="0" Grid.Column="1" CornerRadius="10" />
+            <Button x:Name="divisionButton" Text="/" Command="{Binding OperacionCommand}" CommandParameter="/" BackgroundColor="OrangeRed" TextColor="OrangeRed" FontSize="32" Grid.Row="0" Grid.Column="2" CornerRadius="10">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding DivisionPresionada}" Value="True">
+                        <Setter Property="BackgroundColor" Value="LightSalmon" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Button" Binding="{Binding DivisionPresionada}" Value="False">
+                        <Setter Property="BackgroundColor" Value="Black" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <Button x:Name="multiplicacionButton" Text="*" Command="{Binding OperacionCommand}" CommandParameter="x" BackgroundColor="Black" TextColor="OrangeRed" FontSize="32" Grid.Row="0" Grid.Column="3" CornerRadius="10">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding MultiplicacionPresionada}" Value="True">
+                        <Setter Property="BackgroundColor" Value="LightSalmon" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Button" Binding="{Binding MultiplicacionPresionada}" Value="False">
+                        <Setter Property="BackgroundColor" Value="Black" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
 
             <Button Text="7" Command="{Binding NumeroCommand}" CommandParameter="7" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="0" CornerRadius="10" />
             <Button Text="8" Command="{Binding NumeroCommand}" CommandParameter="8" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="1" CornerRadius="10" />
             <Button Text="9" Command="{Binding NumeroCommand}" CommandParameter="9" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="2" CornerRadius="10" />
-            <Button Text="-" Command="{Binding OperacionCommand}" CommandParameter="-" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="1" Grid.Column="3" CornerRadius="10" />
+            <Button x:Name="restaButton" Text="-" Command="{Binding OperacionCommand}" CommandParameter="-" BackgroundColor="Black" TextColor="OrangeRed" FontSize="32" Grid.Row="1" Grid.Column="3" CornerRadius="10">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding RestaPresionada}" Value="True">
+                        <Setter Property="BackgroundColor" Value="LightSalmon" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Button" Binding="{Binding RestaPresionada}" Value="False">
+                        <Setter Property="BackgroundColor" Value="Black" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
 
             <Button Text="4" Command="{Binding NumeroCommand}" CommandParameter="4" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="0" CornerRadius="10" />
             <Button Text="5" Command="{Binding NumeroCommand}" CommandParameter="5" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="1" CornerRadius="10" />
             <Button Text="6" Command="{Binding NumeroCommand}" CommandParameter="6" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="2" CornerRadius="10" />
-            <Button Text="+" Command="{Binding OperacionCommand}" CommandParameter="+" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="2" Grid.Column="3" CornerRadius="10" />
+            <Button x:Name="sumaButton" Text="+" Command="{Binding OperacionCommand}" CommandParameter="+" TextColor="OrangeRed" FontSize="32" Grid.Row="2" Grid.Column="3" CornerRadius="10">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding SumaPresionada}" Value="True">
+                        <Setter Property="BackgroundColor" Value="LightSalmon" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Button" Binding="{Binding SumaPresionada}" Value="False">
+                        <Setter Property="BackgroundColor" Value="Black" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+
+
 
             <Button Text="1" Command="{Binding NumeroCommand}" CommandParameter="1" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="0" CornerRadius="10" />
             <Button Text="2" Command="{Binding NumeroCommand}" CommandParameter="2" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="1" CornerRadius="10" />
             <Button Text="3" Command="{Binding NumeroCommand}" CommandParameter="3" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="2" CornerRadius="10" />
-            <Button Text="=" Command="{Binding IgualCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="3" Grid.Column="3" CornerRadius="10" />
+            <Button x:Name="igualButton" Text="=" Command="{Binding IgualCommand}" BackgroundColor="Black" TextColor="OrangeRed" FontSize="32" Grid.Row="3" Grid.Column="3" CornerRadius="10" />
+
 
             <Button Text="0" Command="{Binding NumeroCommand}" CommandParameter="0" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="0" CornerRadius="10" />
             <Button Text="00" Command="{Binding NumeroCommand}" CommandParameter="00" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="1" CornerRadius="10" />
             <Button Text="." Command="{Binding NumeroCommand}" CommandParameter="." BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="2" CornerRadius="10" />
-            <Button Text="DEL" Command="{Binding BorrarUnNumeroCommand}" BackgroundColor="OrangeRed" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="3" CornerRadius="10" />
+            <Button Text="DEL" Command="{Binding BorrarUnNumeroCommand}" BackgroundColor="Black" TextColor="White" FontSize="32" Grid.Row="4" Grid.Column="3" CornerRadius="10" />
         </Grid>
     </StackLayout>
 </ContentPage>
